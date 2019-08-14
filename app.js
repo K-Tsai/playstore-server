@@ -1,10 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const cors = require('cors');
 const app = express();
 
 app.use(morgan('common'));
-
+app.use(cors());
 const playstore = require('./playstore.js')
 
 app.get('/apps', (req, res) => {
@@ -25,6 +25,7 @@ app.get('/apps', (req, res) => {
 				.send('Sort must be one of rating or app')
 		}
 	}
+	console.log(playstore);
 	res
 	.json(playstore)
 });
