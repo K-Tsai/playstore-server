@@ -9,6 +9,7 @@ const playstore = require('./playstore.js')
 
 app.get('/apps', (req, res) => {
 	const { genre, sort } = req.query;
+	console.log('genre', genre);
 	if(genre) {
 		if(!['Action', 'Puzzle', 'Strategy', 'Casual', 
 		'Arcade', 'Card'].includes(genre)) {
@@ -25,11 +26,8 @@ app.get('/apps', (req, res) => {
 				.send('Sort must be one of rating or app')
 		}
 	}
-	console.log(playstore);
 	res
 	.json(playstore)
 });
 
-app.listen(8000, () => {
-    console.log('Server started on PORT 8000')
-})
+module.exports = app;
